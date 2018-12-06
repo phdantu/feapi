@@ -17,6 +17,6 @@ class Pagina extends CI_Controller {
 	public function tabela()
 	{
 		$dados['titulo'] = "Tabela de Livros";
-		$this->load->view('home',$dados);
+		$this->load->view('tabela',$dados);
 	}
 }

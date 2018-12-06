@@ -53,3 +53,9 @@ $route['default_controller'] = 'pagina';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['tabela'] = 'index.php/pagina/tabela';
+
+
+$route['salvar'] = "Base/Salvar";
+$route['editar/(:num)'] = "Base/Editar/$1";
+$route['atualizar'] = "Base/Atualizar";
+$route['excluir/(:num)'] = "Base/Excluir/$1";
