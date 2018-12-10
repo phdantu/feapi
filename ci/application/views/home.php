@@ -3,6 +3,15 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
+          <?php 
+            if(isset($altera)){
+              echo "<h3>".$altera."</h3>";
+            }elseif(isset($cadastra)){
+              echo "<h3>".$cadastra."</h3>";
+            }elseif(isset($deleta)){
+              echo "<h3>".$deleta."</h3>";
+            } ?>
+          
           <h1 class="mt-5"><?php echo $titulo ?></h1>
             
               <?php echo validation_errors(); ?>

@@ -16,6 +16,7 @@ class Pagina extends CI_Controller {
 	public function tabela()
 	{
 		$dados['titulo'] = "Tabela de Livros";
+		$dados['livro'] = $this->getQuery();
 		$this->load->view('tabela',$dados);
 	}
 
@@ -44,15 +45,14 @@ class Pagina extends CI_Controller {
 				".$this->db->escape($editora).", ".$this->db->escape($ano).", 
 				".$this->db->escape($idAutor).")";
 			$this->db->query($sql);
-			$dados['resultSet'] = $this->db->affected_rows(); 
+			$dados['cadastra'] = $this->db->affected_rows(); 
 			$dados['titulo'] = "Cadastro de Livros";
 			$this->load->view('successForm',$dados);
 		}
 	}
-	public function getQuery($id)
+	public function getQuery()
 	{
-		if(isset($id)){
-			$query = $this->db->query('SELECT * FROM livros where idLivro='.$this->db->escape($id));
+			/* $query = $this->db->query('SELECT * FROM livros where idLivro='.$this->db->escape($id));
 			foreach ($query->result() as $row)
 			{
 				echo $row->idLivro;
@@ -62,22 +62,58 @@ class Pagina extends CI_Controller {
 				echo $row->ano;
 				echo $row->idAutor;
 				return $livro = new Livro($row->$id, $row->isbn, $row->nome, $row->editora,$row->ano,$row->idAutor);
-			}
-		}
-		else{
-			
+			} */
 			$query = $this->db->get('livro');
 			foreach ($query->result() as $row)
 			{
-				echo $row->idLivro;
-				echo $row->isbn;
-				echo $row->nome;
-				echo $row->editora;
-				echo $row->ano;
-				echo $row->idAutor;
-				$livro[] = new Livro($row->$id, $row->isbn, $row->nome, $row->editora,$row->ano,$row->idAutor);
-				return $livro;
+				$livro[] = $row;
+				//$livro[] = new Livro($row->$id, $row->isbn, $row->nome, $row->editora,$row->ano,$row->idAutor);
+				//return $query;
 			}
-		}
+			return $livro;
+	}
+	public function getOne($id){
+		$query = $this->db->query('SELECT * FROM livro where idLivro='.$this->db->escape($id));
+		return $livro = $query->result();		
+	}
+	public function alter($id){
+		$dados['tempLivro'] = $this->getOne($id);
+		$dados['titulo'] = "Alteração de Livro";
+		$this->load->view('alterar',$dados);
+	}
+
+	public function alterar(){
+		$idLivro = $_POST["idLivro"];
+		$isbn = $_POST["isbn"];
+		$nome = $_POST["nome"];
+		$editora = $_POST["editora"];
+		$ano = $_POST["ano"];
+		$idAutor = $_POST["idAutor"];
+
+		$data = array(
+			'isbn' => $isbn,
+			'nome' => $nome,
+			'editora' => $editora,
+			'ano' => $ano,
+			'idAutor' => $idAutor
+		);
+		$this->db->where('idLivro', $idLivro);
+		$this->db->update('livro',$data);
+		// Produces:
+		//
+		//      UPDATE mytable
+		//      SET title = '{$title}', name = '{$name}', date = '{$date}'
+		//      WHERE id = $id
+		$dados['livro'] = $this->getQuery();
+		$dados['titulo'] = "Tabela de Livro";
+		$dados['altera'] = "Alteração efetuada com sucesso";
+		$this->load->view('tabela',$dados);
+	}
+	public function deleta($id){
+		$this->db->delete('livro', array('idLivro' => $id));
+		$dados['livro'] = $this->getQuery();
+		$dados['deleta'] = "Livro Deletado com sucesso";
+		$dados['titulo'] = "Tabela de Livro";
+		$this->load->view('tabela',$dados);
 	}
 }

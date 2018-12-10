@@ -1,5 +1,6 @@
 <?php
-class Livro{
+if (!defined('BASEPATH')) exit('No direct script access allowed');
+class Livro extends CI_Model{
     public $idLivro;
     public $isbn;
     public $nome;
