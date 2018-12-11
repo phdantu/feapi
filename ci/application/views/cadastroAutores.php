@@ -16,31 +16,18 @@
             
               <?php echo validation_errors(); ?>
 
-              <?php echo form_open('pagina/salvar'); ?>
+              <?php echo form_open('pagina/salvarAutor'); ?>
             <div class="form-group col-md-4 mx-auto">
               <label for="exampleInputEmail1">ID</label>
-              <input class="form-control" type="text" name="idLivro" value="<?php echo set_value('idLivro'); ?>" required />
-              <label for="exampleInputEmail1">ISBN</label>
-              <input class="form-control" type="text" name="isbn" value="<?php echo set_value('isbn'); ?>" required />
+              <input class="form-control" type="text" name="idAutor" value="<?php echo set_value('idAutor'); ?>" required />
               <label for="exampleInputEmail1">Nome</label>
-              <input class="form-control" type="text" name="nome" value="<?php echo set_value('nome'); ?>" required/>
-              <label for="exampleInputEmail1">Editora</label>
-              <input class="form-control" type="text" name="editora" value="<?php echo set_value('editora'); ?>" required />
-              <label for="exampleInputEmail1">Ano</label>
-              <input class="form-control" type="text" name="ano" value="<?php echo set_value('ano'); ?>" required />
-              <div class="form-group">
-                <label for="sel1">Autor:</label>
-                <select name="idAutor" class="form-control" id="sel1">
-                <?php foreach($autores as $row){ 
-                    echo "<option value=".$row->idAutor.">".$row->idAutor." - ".$row->nome."</option>";
-                  }
-                  ?>
-                </select>
-              </div> 
+              <input class="form-control" type="text" name="nome" value="<?php echo set_value('nome'); ?>" required />
+              <label for="exampleInputEmail1">País</label>
+              <input class="form-control" type="text" name="pais" value="<?php echo set_value('pais'); ?>" required/> 
 
 
               <br><br>
-              <div class="col-md-12"><input class="btn btn-primary" type="submit" value="Submit" /></div>
+              <div class="col-md-12"><input class="btn btn-secondary" type="submit" value="Submit" /></div>
 
               </form>
             </div>
