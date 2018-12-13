@@ -5,7 +5,7 @@
 
 <?php echo form_open('pagina/header'); ?>
 <div class="col-md-3 mx-auto card">
-<h4 class="col-md-4 mx-auto">Login</h4>
+<h4 class="mx-auto">Login</h4>
   <div class="form-group">
     <label for="exampleInputEmail1">ID</label>
     <input type="text" class="form-control" id="login" name="login" placeholder="Digite seu ID">

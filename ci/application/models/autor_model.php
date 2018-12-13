@@ -15,7 +15,7 @@ class autor_model extends CI_Model {
 	}
 	public function getOne($id){
 		$query = $this->db->query('SELECT * FROM autor where idAutor='.$this->db->escape($id));
-		return $autor = $query->result();		
+		return $query->result();		
 	}
     public function alterar($idAutor,$nome,$pais){
         $data = array(
