@@ -20,14 +20,14 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
       <div class="container">
-        <a class="navbar-brand" href="<?php echo base_url('index.php/pagina/') ?>"> <?php echo $titulo ?> </a>
+        <a class="navbar-brand" href="<?php echo base_url('index.php/pagina/cadastro') ?>"> <?php echo $titulo ?> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="<?php echo base_url('index.php/pagina/') ?>">Cadastro Livro
+              <a class="nav-link" href="<?php echo base_url('index.php/pagina/cadastro') ?>">Cadastro Livro
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -35,12 +35,18 @@
               <a class="nav-link" href="<?php echo base_url('index.php/pagina/tabela') ?>">Tabela Livro</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="<?php echo base_url('index.php/pagina/cadastroAutor') ?>">Cadastro Autor
+              <a class="nav-link" href="<?php echo base_url('index.php/autor/cadastroAutor') ?>">Cadastro Autor
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('index.php/pagina/tabelaAutor') ?>">Tabela Autor</a>
+              <a class="nav-link" href="<?php echo base_url('index.php/autor/tabelaAutor') ?>">Tabela Autor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('index.php/cliente/cadastroCliente') ?>">Cadastro Cliente</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('index.php/cliente/tabelaCliente') ?>">Tabela Cliente</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo base_url('index.php/pagina/logout') ?>">Logout</a>

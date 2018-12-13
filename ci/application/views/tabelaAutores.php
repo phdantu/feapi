@@ -25,8 +25,8 @@
             <th scope="row"><?php echo $row->idAutor ?></th>
             <td><?php echo $row->nome ?></td>
             <td><?php echo $row->pais ?></td>
-            <td><a type="button" href="<?php echo base_url('index.php/pagina/alterAutor/'.$temp) ?>" value="<?php echo $row->idAutor; ?>" class="btn btn-success">Alterar</a></td>
-            <td><a type="button" href="<?php echo base_url('index.php/pagina/deletaAutor/'.$temp) ?>" value="<?php echo $row->idAutor; ?>" class="btn btn-danger">Deletar</a></td>
+            <td><a type="button" href="<?php echo base_url('index.php/autor/alterAutor/'.$temp) ?>" value="<?php echo $row->idAutor; ?>" class="btn btn-success">Alterar</a></td>
+            <td><a type="button" href="<?php echo base_url('index.php/autor/deletaAutor/'.$temp) ?>" value="<?php echo $row->idAutor; ?>" class="btn btn-danger">Deletar</a></td>
             </tr>
         <?php } ?>
         </tbody>

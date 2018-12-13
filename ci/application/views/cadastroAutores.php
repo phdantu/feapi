@@ -16,7 +16,7 @@
             
               <?php echo validation_errors(); ?>
 
-              <?php echo form_open('pagina/salvarAutor'); ?>
+              <?php echo form_open('autor/salvarAutor'); ?>
             <div class="form-group col-md-4 mx-auto">
               <label for="exampleInputEmail1">ID</label>
               <input class="form-control" type="text" name="idAutor" value="<?php echo set_value('idAutor'); ?>" required />

@@ -7,7 +7,7 @@
             
               <?php echo validation_errors(); ?>
 
-              <?php echo form_open('pagina/alterarAutor');
+              <?php echo form_open('autor/alterarAutor');
               foreach($tempAutor as $row){ ?>
             <div class="form-group col-md-4 mx-auto">
               <label for="exampleInputEmail1">ID</label>
