@@ -6,13 +6,17 @@ class Cliente extends CI_Controller {
 		
     }
     public function cadastroCliente(){
-		$dados['titulo'] = "Cadastro de Autores";
+		$dados['titulo'] = "Cadastro de Clientes";
 		$this->load->view('cadastroCliente',$dados);
 	}
 	public function tabelaCliente(){
-		$dados['titulo'] = "Tabela de Autores";
-		$dados['clientes'] = $this->cliente_model->getQuery();
-		$this->load->view('tabelaClientes',$dados);
+		$dados['titulo'] = "Tabela de Clientes";
+		if($this->cliente_model->getQuery()){
+			$dados['clientes'] = $this->cliente_model->getQuery();
+			$this->load->view('tabelaClientes',$dados);
+		}else{
+			$this->load->view('cadastroCliente',$dados);
+		}
 	}
     	//Pega os dados para encaminhar para o livro model, e retorna para o formulario de sucesso
 	public function salvarCliente(){
@@ -28,19 +32,43 @@ class Cliente extends CI_Controller {
 			$this->load->view('successForm',$dados);
     }
     public function salvarClienteParaConfirmar(){
-        $matricula = $_POST["matricula"];
-		$nome = $_POST["nome"];
-        $telefone = $_POST["telefone"];
-        $cep = $_POST["cep"];
-        $logradouro;
-        $url = "https://viacep.com.br/ws/".$cep."/xml/";
-        $xml = simplexml_load_string($url);
-        print_r($xml);
-        die();
+		$cep = $_POST["cep"];
+		$url = "https://viacep.com.br/ws/".$cep."/xml/";
+		
+		//abre a conexao
+		$ch = curl_init();
+		//define a url
+		curl_setopt($ch, CURLOPT_URL, $url);
+		//define para trazer o xml como string
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
+		$result = curl_exec($ch);
+		//transforma a string de resultado em um xml
+		$xml = simplexml_load_string($result);
+		$logradouro = $xml->logradouro;
+
+       /*  $xml = simplexml_load_string($url);
+        print_r($xml);
+        die(); */
+
+		/*$this->load->library('guzzle');
+
+		 $client = new GuzzleHttp\Client();
+		$res = $client->request('GET', $url);
+		print_r($res->getBody());
+		$dados['dados'] = $res->getBody(); */
+
+
+		$dados['matricula'] = $_POST["matricula"];
+		$dados['nome'] = $_POST["nome"];
+		$dados['telefone'] = $_POST["telefone"];
+		$dados['cep'] = $cep;
+		$dados['logradouro'] = $logradouro;
+		$dados['titulo'] = "Cadastro de Clientes";
+		 $this->load->view('confirmaCadastroCliente',$dados);
 	}
 	
-	public function consulta(){
+/* 	public function consulta(){
     
         $cep = $this->input->post('cep');
         
@@ -48,7 +76,7 @@ class Cliente extends CI_Controller {
         
         echo $this->curl->consulta($cep);
         
-    }
+    } */
     //carrega o livro e manda para o formulario
 	public function alterCliente($id){
 		$dados['tempCliente'] = $this->cliente_model->getOne($id);
@@ -71,11 +99,15 @@ class Cliente extends CI_Controller {
 		$this->load->view('tabelaClientes',$dados);
     }
     public function deletaCliente($id){
-		$this->autor_model->deletar($id);
-		$dados['clientes'] = $this->autor_model->getQuery();
-		$dados['deleta'] = "Autor Deletado com sucesso";
-		$dados['titulo'] = "Tabela de Clientes";
-		$this->load->view('tabelaClientes',$dados);
+		$this->cliente_model->deletar($id);
+		if($this->cliente_model->getQuery() !== null){
+			$dados['clientes'] = $this->cliente_model->getQuery();
+			$dados['deleta'] = "Autor Deletado com sucesso";
+			$dados['titulo'] = "Tabela de Clientes";
+			$this->load->view('tabelaClientes',$dados);
+		}else{
+			$this->load->view('cadastroCliente',$dados);
+		}
 	}
 
 }

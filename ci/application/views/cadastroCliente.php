@@ -1,5 +1,4 @@
 <?php $this->load->view('header'); ?>
-<script src="//code.jquery.com/jquery-2.2.2.min.js"></script>
     <!-- Page Content -->
     <div class="container">
       <div class="row">
@@ -14,7 +13,35 @@
             } ?>
           
           <h1 class="mt-5"><?php echo $titulo ?></h1>
-            <div class="col-md-4">
+            
+
+          
+              <?php echo validation_errors(); ?>
+
+              <?php echo form_open('cliente/salvarClienteParaConfirmar'); ?>
+            <div class="form-group col-md-4 mx-auto">
+              <label for="exampleInputEmail1">ID</label>
+              <input class="form-control" type="text" name="idCliente" value="<?php echo set_value('idCliente'); ?>" required />
+              <label for="exampleInputEmail1">Matricula</label>
+              <input class="form-control" type="text" name="matricula" value="<?php echo set_value('matricula'); ?>" required />
+              <label for="exampleInputEmail1">Nome</label>
+              <input class="form-control" type="text" name="nome" value="<?php echo set_value('nome'); ?>" required/> 
+              <label for="exampleInputEmail1">Telefone</label>
+              <input class="form-control" type="text" name="telefone" value="<?php echo set_value('telefone'); ?>" required/> 
+              <label for="exampleInputEmail1">Cep</label>
+              <input class="form-control" type="text" name="cep" value="<?php echo set_value('cep'); ?>" required/> 
+              
+
+
+              <br><br>
+              <div class="col-md-12"><input class="btn btn-secondary" type="submit" value="Submit" /></div>
+
+              </form>
+            </div>
+
+
+
+           <!--  <div class="col-md-4">
                   <div class="form-group">
                       <label for="cep">CEP:</label>
                       <input type="text" name="cep" id="cep" class="form-control" autofocus required placeholder="Somente os números do CEP" />
@@ -38,37 +65,13 @@
                       <label for="estado">Estado:</label>
                       <input type="text" name="estado" id="estado" class="form-control"  disabled required size="2"/>
                   </div>
-              </div>
-
-          
-              <?php echo validation_errors(); ?>
-
-              <?php echo form_open('cliente/salvarClienteParaConfirmar'); ?>
-            <div class="form-group col-md-4">
-              <label for="exampleInputEmail1">ID</label>
-              <input class="form-control" type="text" name="idCliente" value="<?php echo set_value('idCliente'); ?>" required />
-              <label for="exampleInputEmail1">Matricula</label>
-              <input class="form-control" type="text" name="matricula" value="<?php echo set_value('matricula'); ?>" required />
-              <label for="exampleInputEmail1">Nome</label>
-              <input class="form-control" type="text" name="nome" value="<?php echo set_value('nome'); ?>" required/> 
-              <label for="exampleInputEmail1">Telefone</label>
-              <input class="form-control" type="text" name="telefone" value="<?php echo set_value('telefone'); ?>" required/> 
-              <label for="exampleInputEmail1">Cep</label>
-              <input class="form-control" type="text" name="cep" value="<?php echo set_value('cep'); ?>" required/> 
-              
-
-
-              <br><br>
-              <div class="col-md-12"><input class="btn btn-secondary" type="submit" value="Submit" /></div>
-
-              </form>
-            </div>
+              </div> -->
         </div>
       </div>
     </div>
 
   </body>
-  <script>
+<!--   <script>
             
             $(function(){
                 $("#btn_consulta").click(function(){
@@ -84,6 +87,7 @@
                         cep : cep
                     }, 
                     function(dados){
+                        console.log(dados);
                         $('#rua').val(dados.logradouro);
                         $('#bairro').val(dados.bairro);
                         $('#cidade').val(dados.localidade);
@@ -94,5 +98,5 @@
             });
             
             
-        </script>
+        </script> -->
 </html>

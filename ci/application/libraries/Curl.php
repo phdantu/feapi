@@ -8,7 +8,7 @@
  */
 class Curl {
  
-    private $endereco_ws = "http://viacep.com.br/ws";
+    private $endereco_ws = "https://viacep.com.br/ws";
     private $url_ws;
  
     public function consulta($cep) {

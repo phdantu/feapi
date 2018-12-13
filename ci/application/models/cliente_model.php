@@ -6,12 +6,12 @@ class cliente_model extends CI_Model {
     }
     function getQuery()
 	{
-			$query = $this->db->get('cliente');
-			foreach ($query->result() as $row)
-			{
-				$cliente[] = $row;
-            }
-			return $cliente;
+		$query = $this->db->get('cliente');
+		foreach ($query->result() as $row)
+		{
+			$cliente[] = $row;
+		}
+		return $cliente;
 	}
 	public function getOne($id){
 		$query = $this->db->query('SELECT * FROM cliente where idCliente='.$this->db->escape($id));
@@ -45,10 +45,10 @@ class cliente_model extends CI_Model {
             'cep' => $cep,
 			'logradouro' => $logradouro
 		);
-		$this->cliente_model->insert('cliente',$data);
+		$this->db->insert('cliente',$data);
 	}
 	public function deletar($id){
-		$this->db->delete('cliente', array('idAutor' => $id));
+		$this->db->delete('cliente', array('idCliente' => $id));
 	}
 }
 

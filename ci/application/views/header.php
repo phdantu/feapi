@@ -12,8 +12,10 @@
 
     <!-- Bootstrap core CSS -->
     <!-- <link href./site/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet"> -->
+
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  </head>
+    <!-- <script src="//code.jquery.com/jquery-2.2.2.min.js"></script> --></head>
 
   <body>
     <?php if(isset($_SESSION['login']) && isset($_SESSION['senha'])){ ?>
